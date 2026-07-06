@@ -8,26 +8,28 @@ function AdminLogin() {
   const [password, setPassword] = useState("");
 
   async function handleLogin() {
-    try {
-      const response = await axios.post("https://gram-connect-rf72.onrender.com/login", ...)
+  try {
+    const response = await axios.post(
+      "https://gram-connect-rf72.onrender.com/login",
+      {
         email,
         password,
-      });
-
-
-      const user = response.data.user;
-
-      if (user.role !== "admin") {
-        alert("You are not an admin");
-        return;
       }
+    );
 
-      localStorage.setItem("user", JSON.stringify(user));
-      navigate("/admin");
-    } catch {
-      alert("Invalid admin email or password");
+    const user = response.data.user;
+
+    if (user.role !== "admin") {
+      alert("You are not an admin");
+      return;
     }
+
+    localStorage.setItem("user", JSON.stringify(user));
+    navigate("/admin");
+  } catch (error) {
+    alert("Invalid email or password");
   }
+}
 
   return (
     <div style={container}>
