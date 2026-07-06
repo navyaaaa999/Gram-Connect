@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000";
-
+const API = "https://gram-connect-rf72.onrender.com";
 export const addComplaint = async (complaint) => {
   const response = await axios.post(`${API}/complaints`, complaint);
   return response.data;
